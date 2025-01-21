@@ -22,3 +22,7 @@ Sweat is a web application enabling users to log their workout sets, reps, and w
 [Express-url]: https://expressjs.com/
 [Mongodb-url]: https://www.mongodb.com/
 [Mongodb]: https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white
+
+### Figma Reference
+
+[Design File](https://www.figma.com/design/H60F1uZ7S7vCVkO1QzWyLJ/Untitled?node-id=0-1&t=8vtNiBItMYShVuZy-1)
