@@ -8,8 +8,6 @@ Sweat is a web application enabling users to log their workout sets, reps, and w
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project.
-
 * [![Mongodb][Mongodb]][Mongodb-url]
 * [![Express][Express.js]][Express-url]
 * [![React][React.js]][React-url]
