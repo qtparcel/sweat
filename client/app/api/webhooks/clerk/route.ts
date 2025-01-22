@@ -2,6 +2,10 @@ import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
 
+function toBase64(payload: string): string {
+  return btoa(payload);
+}
+
 export async function POST(req: Request) {
   const SIGNING_SECRET = process.env.SIGNING_SECRET
 
@@ -27,7 +31,7 @@ export async function POST(req: Request) {
 
   // Get body
   const payload = await req.json()
-  const body = JSON.stringify(payload)
+  const body = toBase64(JSON.stringify(payload))
 
   let evt: WebhookEvent
 
