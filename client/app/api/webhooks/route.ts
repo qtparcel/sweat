@@ -3,7 +3,6 @@ import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
 
 export async function POST(req: Request) {
-  console.log("1")
   const SIGNING_SECRET = process.env.SIGNING_SECRET
 
   if (!SIGNING_SECRET) {
@@ -12,7 +11,6 @@ export async function POST(req: Request) {
 
   // Create new Svix instance with secret
   const wh = new Webhook(SIGNING_SECRET)
-  console.log("2")
 
   // Get headers
   const headerPayload = await headers()
@@ -26,25 +24,21 @@ export async function POST(req: Request) {
       status: 400,
     })
   }
-  console.log('3')
 
   // Get body
   const payload = await req.json()
   const body = JSON.stringify(payload)
-  console.log('4')
 
   let evt: WebhookEvent
 
   // Verify payload with headers
   try {
-    console.log('5')
     evt = wh.verify(body, {
       'svix-id': svix_id,
       'svix-timestamp': svix_timestamp,
       'svix-signature': svix_signature,
     }) as WebhookEvent
   } catch (err) {
-    console.log('6')
     console.error('Error: Could not verify webhook:', err)
     return new Response('Error: Verification error', {
       status: 400,
@@ -55,13 +49,12 @@ export async function POST(req: Request) {
   // For this guide, log payload to console
   const { id } = evt.data
   const eventType = evt.type
-    console.log('7')
+  console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
+  console.log('Webhook payload:', body)
 
   if (eventType === 'user.created') {
-    console.log("user created")
-  console.log('userId:', id, 'evt.data.id', evt.data.id)
-}
+    console.log('user created');
+  }
 
-  console.log('8')
   return new Response('Webhook received', { status: 200 })
 }
