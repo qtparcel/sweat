@@ -1,10 +1,17 @@
 import React from "react";
+import Sidebar from "../components/sidebar";
 
-export const layout = ({ children }: { children: React.ReactNode }) => {
+export default function layout ({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      {children}
+    <>
+    <div className="grid">
+      <div className="col-span-1">
+        <Sidebar />
+      </div>
+      <div className="col-span-11">
+        {children}
+      </div>
     </div>
+    </>
   );
 };
-export default layout;
