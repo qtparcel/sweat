@@ -52,7 +52,7 @@ export async function POST(req: Request) {
 
   if (eventType === 'user.created') {
     console.log("user created")
-  console.log('userId:', evt.data.id)
+  console.log('userId:', id, 'evt.data.id', evt.data.id)
 }
 
   return new Response('Webhook received', { status: 200 })
